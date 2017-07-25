@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve myapp
+After=network.target
+
+[Service]
+User=pi
+Group=www-data
+WorkingDirectory=/home/pi/FlaskMQTT_GUI
+ExecStart=/usr/local/bin/gunicorn --worker-class eventlet -b 0.0.0.0 -w 4 app:app
+
+[Install]
+WantedBy=multi-user.target
+
